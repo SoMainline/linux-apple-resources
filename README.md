@@ -1,5 +1,7 @@
 # Resources for Linux on checkm8able iDevices
 
+* [How to build and boot Linux on my iDevice?](HOWTO.md)
+-----
 
 ## Feature matrix
 ```
