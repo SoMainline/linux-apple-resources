@@ -53,7 +53,7 @@ sudo apt-get install -y ld64 cctools-strip
  * press enter and select your desired pagesize with arrows (4K for A7-A8X, 16K for A9 and above)
  * press enter to select
  * mash ESC like a mad dog until you get asked whether you want to save, choose yes
-6. compile the kernel with `make -j$(nproc) Image.lzma dtbs` (arm64) / `make ARCH=arm64 CROSS_COMPILE=clang LLVM=1 -j$(nproc) Image.lzma dtbs` (!arm64)
+6. compile the kernel with `make -j$(nproc) Image.lzma dtbs` (arm64) / `make ARCH=arm64 CROSS_COMPILE=clang-arm64 LLVM=1 -j$(nproc) Image.lzma dtbs` (!arm64)
 
 
 ## DTBPACK
