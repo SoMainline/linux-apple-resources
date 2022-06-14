@@ -68,3 +68,4 @@ sudo apt-get install -y ld64 cctools-strip
 0. think back to where your pongoOS directory is
 1. find some arm64 ramdisk (you can steal it from any arm64 distro's /boot partition or use one from this repo)
 2. python3 /path/to/pongoOS/scripts/load_linux.py -k arch/arm64/boot/Image.lzma -d dtbpack -r someramdisk.img
+ * `Waiting for device...` -> unplug and replug the Lightning cable
