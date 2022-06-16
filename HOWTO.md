@@ -5,67 +5,93 @@
 
 ### macOS
 
-0. install [checkra1n](https://checkra.in)
-1. git clone https://github.com/konradybcio/pongoOS
-2. cd pongoOS
-3. `make -j$(nproc)`
-4. `/Applications/checkra1n.app/Contents/MacOS/checkra1n -v -V -p -c -k /build/Pongo.bin`
+1. Install [checkra1n](https://checkra.in)
+2. `git clone https://github.com/konradybcio/pongoOS`
+3. `cd pongoOS`
+4. `make -j$(nproc)`
+5. `/Applications/checkra1n.app/Contents/MacOS/checkra1n -v -V -p -c -k ./build/Pongo.bin`
 
 ### Linux (adapted from the pongoOS repo)
-0. install [checkra1n](https://checkra.in)
-1. git clone https://github.com/konradybcio/pongoOS
-2. cd pongoOS
-3. install clang (use your distro's package manager)
-4. install ld64 and cctools-strip
- * on Debian, Ubuntu and friends:
+1. Install [checkra1n](https://checkra.in)
+2. `git clone https://github.com/konradybcio/pongoOS`
+3. `cd pongoOS`
+4. Install `clang` (use your distro's package manager)
+5. Install `ld64` and `cctools-strip`
+
+#### Debian, Ubuntu and friends:
 ```
 echo 'deb https://assets.checkra.in/debian /' | sudo tee /etc/apt/sources.list.d/checkra1n.list
 sudo apt-key adv --fetch-keys https://assets.checkra.in/debian/archive.key
 sudo apt-get update
 sudo apt-get install -y ld64 cctools-strip
 ```
- * else build from this repo `https://github.com/Siguza/ld64`
-5. `EMBEDDED_CC=clang EMBEDDED_LDFLAGS=-fuse-ld=/usr/bin/ld64 STRIP=cctools-strip make all`
-6. `/path/to/checkra1n -v -V -p -c -k /build/Pongo.bin`
+#### Other distros:
+**ld64**
+```
+wget https://github.com/Siguza/ld64/releases/download/530-2/ld64.zip
+unzip ld64.zip 
+chmod +x ld64
+sudo mv ./ld64 /usr/bin/
+rm ./ld64.zip ./ld64_530-2_amd64.deb 
+```
+
+**cctools-strip**
+```
+wget https://github.com/Siguza/ld64/releases/download/530-2/cctools-strip.zip
+unzip cctools-strip.zip
+chmod +x cctools-strip
+sudo mv ./cctools-strip /usr/bin/
+rm ./cctools-strip.zip ./cctools-strip_949.0.1-2_amd64.deb
+```
+
+* Alternatively build from this repo: `https://github.com/Siguza/ld64`
+6. `EMBEDDED_CC=clang EMBEDDED_LDFLAGS=-fuse-ld=/usr/bin/ld64 STRIP=cctools-strip make all`
+7. `/path/to/checkra1n -v -V -p -c -k ./build/Pongo.bin`
 
 
-## Linux
+## Linux (kernel)
 
 ### macOS
 
-0. get a Linux machine / VM and follow the instructions below `¯\_(ツ)_/¯`
+1. Get a Linux machine / VM and follow the instructions below `¯\_(ツ)_/¯`
 
 ### Linux
 
-0. install `clang ncurses flex git` and whatever build-essential packages from your distro
-1. `https://github.com/konradybcio/linux-apple` (this like >2 GiB in size)
-2. cd linux-apple
-3. 
- * get a defconfig (there's an example one in this repo) and copy it as .config to the directory you're in or
- * run `make defconfig` if you're on arm64 or
- * run `make ARCH=arm64 CROSS_COMPILE=clang LLVM=1 defconfig` if you're on !arm64
-4. make sure `CONFIG_ARCH_APPLE`, `CONFIG_FB_SIMPLE` and `CONFIG_USB_DWC2` are set to =y
-5. adjust your page size:
- * run `make menuconfig` (arm64) / `make ARCH=arm64 CROSS_COMPILE=clang LLVM=1 menuconfig` (!arm64)
- * press `/` to search
- * type `_PAGES` and press ENTER
- * press 1
- * press enter and select your desired pagesize with arrows (4K for A7-A8X, 16K for A9 and above)
- * press enter to select
- * mash ESC like a mad dog until you get asked whether you want to save, choose yes
-6. compile the kernel with `make -j$(nproc) Image.lzma dtbs` (arm64) / `make ARCH=arm64 CROSS_COMPILE=clang-arm64 LLVM=1 -j$(nproc) Image.lzma dtbs` (!arm64)
+1. Install `clang ncurses flex git` and whatever build-essential packages from your distro
+2. `git clone https://github.com/konradybcio/linux-apple` (this like >2 GiB in size)
+3. `cd linux-apple`
+4. Get a defconfig:
+ * There's an example one in this repo and copy it as `.config` to the directory you're in. (`wget https://raw.githubusercontent.com/SoMainline/linux-apple-resources/master/example.config -O ./.config`)
+ * Alternatively:
+    * **On arm64:** Run `make defconfig`
+    * **NOT on arm64:** Run `make ARCH=arm64 LLVM=1 defconfig`
+5. Make sure `CONFIG_ARCH_APPLE`, `CONFIG_FB_SIMPLE` and `CONFIG_USB_DWC2` are set to `=y`
+6. Adjust your page size:
+ * **On arm64:** Run `make menuconfig` 
+ * **NOT on arm64:** Run `make ARCH=arm64 LLVM=1 menuconfig`
+ * Press `/` to search
+ * Type `_PAGES` and press ENTER
+ * Press `1`
+ * Press `ENTER` and select your desired pagesize with arrows (4K for A7-A8X, 16K for A9 and above)
+ * Press `ENTER` to select
+ * Mash `ESC` like a mad dog until you get asked whether you want to save, choose yes
+7. Compile the kernel: 
+ * **On arm64:** `make -j$(nproc) Image.lzma dtbs`
+ * **Not on arm64:** `make ARCH=arm64 LLVM=1 -j$(nproc) Image.lzma dtbs`
 
 
 ## DTBPACK
 
-0. get the dtbpack script from this repo and put it in your Linux source directory
-1. make it executable by running `chmod +x dtbpack.sh`
-2. run ./dtbpack.sh
-3. verify there is now a ~100KiB file called dtbpack in your directory by running `ls -lh dtbpack`
+1. Get the dtbpack script from this repo and put it in your Linux source directory 
+(`wget https://raw.githubusercontent.com/SoMainline/linux-apple-resources/master/dtbpack.sh`)
+
+2. make it executable by running `chmod +x dtbpack.sh`
+3. Run `./dtbpack.sh`
+4. Verify there is now a ~100KiB file called `dtbpack` in your directory by running `ls -lh dtbpack`
 
 ## Boot the thing
 
-0. think back to where your pongoOS directory is
-1. find some arm64 ramdisk (you can steal it from any arm64 distro's /boot partition or use one from this repo)
-2. python3 /path/to/pongoOS/scripts/load_linux.py -k arch/arm64/boot/Image.lzma -d dtbpack -r someramdisk.img
- * `Waiting for device...` -> unplug and replug the Lightning cable
+1. Think back to where your pongoOS directory is
+2. Find some arm64 ramdisk (you can steal it from any arm64 distro's /boot partition or use one from this repo)
+3. `python3 /path/to/pongoOS/scripts/load_linux.py -k arch/arm64/boot/Image.lzma -d dtbpack -r someramdisk.img`
+  * If you see `Waiting for device...` -> unplug and replug the lightning cable

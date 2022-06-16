@@ -26,7 +26,7 @@ X - not supported
 | Power domains 	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |   NVMe/NAND   	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |      PCIe     	|  - 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
-|    Buttons    	|  ✓ 	|  ✓ 	|  ✓  	|  ✓ 	|  ✓  	|  ✓  	|   ✓  	|  - 	|  ✓  	|
+|    Buttons    	|  ✓ 	|  ✓ 	|  ✓  	|  ✓ 	|  ✓  	|  ✓  	|   ✓  	|  - 	|  X  	|
 |  Touchscreen  	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |   Backlight   	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |    Sensors    	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  - 	|  X  	|
