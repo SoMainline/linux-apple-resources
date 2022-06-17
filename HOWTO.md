@@ -64,11 +64,11 @@ rm ./cctools-strip.zip ./cctools-strip_949.0.1-2_amd64.deb
  * There's an example one in this repo and copy it as `.config` to the directory you're in. (`wget https://raw.githubusercontent.com/SoMainline/linux-apple-resources/master/example.config -O ./.config`)
  * Alternatively:
     * **On arm64:** Run `make defconfig`
-    * **NOT on arm64:** Run `make ARCH=arm64 CROSS_COMPILE=clang-arm64 LLVM=1 defconfig`
+    * **NOT on arm64:** Run `make ARCH=arm64 LLVM=1 defconfig`
 5. Make sure `CONFIG_ARCH_APPLE`, `CONFIG_FB_SIMPLE` and `CONFIG_USB_DWC2` are set to `=y`
 6. Adjust your page size:
  * **On arm64:** Run `make menuconfig` 
- * **NOT on arm64:** Run `make ARCH=arm64 CROSS_COMPILE=clang-arm64 LLVM=1 menuconfig`
+ * **NOT on arm64:** Run `make ARCH=arm64 LLVM=1 menuconfig`
  * Press `/` to search
  * Type `_PAGES` and press ENTER
  * Press `1`
@@ -77,7 +77,7 @@ rm ./cctools-strip.zip ./cctools-strip_949.0.1-2_amd64.deb
  * Mash `ESC` like a mad dog until you get asked whether you want to save, choose yes
 7. Compile the kernel: 
  * **On arm64:** `make -j$(nproc) Image.lzma dtbs`
- * **Not on arm64:** `make ARCH=arm64 CROSS_COMPILE=clang-arm64 LLVM=1 -j$(nproc) Image.lzma dtbs`
+ * **Not on arm64:** `make ARCH=arm64 LLVM=1 -j$(nproc) Image.lzma dtbs`
 
 
 ## DTBPACK
