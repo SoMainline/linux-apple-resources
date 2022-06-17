@@ -87,7 +87,7 @@ rm ./cctools-strip.zip ./cctools-strip_949.0.1-2_amd64.deb
 
 2. make it executable by running `chmod +x dtbpack.sh`
 3. Run `./dtbpack.sh`
-4. Verify there is now a ~100KiB file called `dtbpack` in your directory by running `ls -lh dtbpack`
+4. Verify there is now a ~100KiB (or more) file called `dtbpack` in your directory by running `ls -lh dtbpack`
 
 ## Boot the thing
 
