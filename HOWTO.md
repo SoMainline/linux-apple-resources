@@ -57,7 +57,7 @@ rm ./cctools-strip.zip ./cctools-strip_949.0.1-2_amd64.deb
 
 ### Linux
 
-1. Install `clang ncurses flex git` and whatever build-essential packages from your distro
+1. Install `clang ncurses flex git bison` and whatever build-essential packages from your distro
 2. `git clone https://github.com/konradybcio/linux-apple` (this like >2 GiB in size)
 3. `cd linux-apple`
 4. Get a defconfig:
