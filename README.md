@@ -44,3 +44,4 @@ X - not supported
 |    GPU kekw   	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  - 	|  X  	|
 |   Fuel gauge  	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |    Charger    	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
+|    Android    	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
