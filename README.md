@@ -45,4 +45,4 @@ X - not supported
 |   Fuel gauge  	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |    Charger    	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 ## What about Android?
-We are going to port Android (and LineageOS/CyanogenMod) as well in the future.
+We may attempt to port Android (and LineageOS/CyanogenMod) as well to Apple devices in the future, however it may or may not succeed.
