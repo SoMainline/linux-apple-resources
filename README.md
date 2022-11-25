@@ -44,3 +44,5 @@ X - not supported
 |    GPU kekw   	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  - 	|  X  	|
 |   Fuel gauge  	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
 |    Charger    	|  X 	|  X 	|  X  	|  X 	|  X  	|  X  	|   X  	|  X 	|  X  	|
+## What about Android?
+We are going to port Android (and LineageOS/CyanogenMod) as well in the future.
